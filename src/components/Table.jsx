@@ -44,7 +44,11 @@ const Table = () => {
   };
 
   useEffect(() => {
-    getBooks();
+    const interval = setInterval(() => {
+      getBooks();
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   if (loading) {
