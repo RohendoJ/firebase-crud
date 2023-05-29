@@ -4,6 +4,7 @@ import db from "../firebase";
 import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Swal from "sweetalert2";
+import emptyBook from "../assets/empty-book.jpg";
 
 const Table = () => {
   const [books, setBooks] = useState([]);
@@ -60,6 +61,19 @@ const Table = () => {
           size="2xl"
           style={{ color: "#14dbb4" }}
         />
+      </div>
+    );
+  }
+
+  if (books.length === 0) {
+    return (
+      <div className="flex flex-col justify-center items-center">
+        <img
+          src={emptyBook}
+          alt="empty"
+          className="object-cover w-[50vw] md:w-[40vw] lg:w-[30vw] xl:w-[20vw]"
+        />
+        <p className="text-[1rem]">This no data here.. try add book</p>
       </div>
     );
   }
